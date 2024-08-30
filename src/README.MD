@@ -1,1 +1,1 @@
-# Namaste React 🚀 Check
+Welcome to Snackerint! - A Food Delivery Web App
