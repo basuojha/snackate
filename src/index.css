@@ -1,0 +1,119 @@
+.text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    vertical-align: middle;
+    align-items: center;
+    background-color: #F8EDE3;
+}
+.logo {
+    height: 100px;
+    width: 100px;
+    padding: 16px 16px 16px 24px;
+}
+.cart-icon {
+    height: 20px;
+    width: 20px;
+    align-items: center;
+}
+.nav-links {
+    font-size: 16px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #C5705D;
+
+}
+
+.nav-links > ul {
+    display: flex;
+    list-style-type: none;
+}
+
+.nav-links > ul > li {
+    padding: 20px;
+}
+
+.cart-icon {
+    padding: 20px 24px 16px 20px;
+}
+
+.body {
+    background-color: #F8EDE3;
+}
+.restaurant-card-container {
+    display: flex;
+    padding: 24px;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+}
+
+.restaurant-card {
+    width: 250px;
+    height: 320px;
+    background-color: #DFD3C3;
+    border-radius: 16px;
+    color: #C5705D;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.restaurant-card:hover {
+    cursor: pointer;
+    box-shadow: #C5705D;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.restaurant-image {
+    height: 180px;
+    width: 234px;
+    padding: 8px;
+    border-radius: 16px;
+}
+
+.name-container {
+    padding: 8px;
+}
+
+.name {
+    color: #7E4338; 
+    font-weight: 600;
+    padding: 0px 8px;
+}
+
+.address {
+    color: #7E4338; 
+    padding: 0px 8px;
+}
+
+.cuisine {
+    font-weight: 600;
+    padding: 8px;
+}
+
+.details-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 8px;
+}
+.star-rating {
+    height: 20px;
+    width: 20px;
+}
+
+.rating-container {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+.hr-break {
+    background-color: #C5705D;
+    border-color: #C5705D;
+}
