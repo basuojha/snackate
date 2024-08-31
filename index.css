@@ -17,10 +17,15 @@
     width: 100px;
     padding: 16px 16px 16px 24px;
 }
+
 .cart-icon {
-    height: 20px;
-    width: 20px;
+    height: 25px;
+    width: 25px;
     align-items: center;
+    padding: 20px 24px 16px 20px;
+    position: relative;
+    top: -4px;
+
 }
 .nav-links {
     font-size: 16px;
@@ -32,36 +37,38 @@
 .nav-links > ul {
     display: flex;
     list-style-type: none;
+    align-items: center;
 }
 
 .nav-links > ul > li {
     padding: 20px;
 }
 
-.cart-icon {
-    padding: 20px 24px 16px 20px;
-}
-
 .body {
     background-color: #F8EDE3;
 }
-.restaurant-card-container {
+.restaurant-card-container{
+    display: flex;
+    justify-content: center;
+}
+.restaurant-cards {
     display: flex;
     padding: 24px;
     flex-wrap: wrap;
     gap: 24px;
-    justify-content: center;
+    width: 83.5%;
 }
 
 .restaurant-card {
-    width: 250px;
-    height: 320px;
+    width: 380px;
+    height: 428px;
     background-color: #DFD3C3;
     border-radius: 16px;
     color: #C5705D;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     transition: transform 0.2s, box-shadow 0.2s;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px;
 }
 
 .restaurant-card:hover {
@@ -72,20 +79,15 @@
 }
 
 .restaurant-image {
-    height: 180px;
-    width: 234px;
-    padding: 8px;
+    height: 260px;
+    width: 380px;
     border-radius: 16px;
-}
-
-.name-container {
-    padding: 8px;
 }
 
 .name {
     color: #7E4338; 
     font-weight: 600;
-    padding: 0px 8px;
+    padding: 8px;
 }
 
 .address {
@@ -102,6 +104,9 @@
     display: flex;
     justify-content: space-between;
     padding: 0px 8px;
+    color: #7e4338;
+    padding-top: 8px;
+    align-items: center;
 }
 .star-rating {
     height: 20px;
@@ -116,4 +121,23 @@
 .hr-break {
     background-color: #C5705D;
     border-color: #C5705D;
+}
+
+.discount-image {
+    height: 16px;
+    width: 16px;
+}
+
+.discount {
+    display: flex;
+    gap: 4px; 
+    align-items: center;
+    padding: 6px 0px 8px 8px;
+}
+.dot-separator {
+    width: 5px;
+    height: 5px;
+    background-color: #C5705D;
+    border-radius: 50%;
+    display: inline-block;
 }
