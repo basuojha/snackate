@@ -1,4 +1,4 @@
-import CartImage from '../../../assets/images/cart.png'
+import CartImage from '../../assets/images/cart.png'
 
 const NavLinks = () => {
   return (

@@ -93,8 +93,7 @@ export const restaurantList = [
     id: 9,
     name: 'Pizza Palace',
     timeForDelivery: 20,
-    imgSrc:
-      'https://images.pexels.com/photos/1579734/pexels-photo-1579734.jpeg',
+    imgSrc: 'https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg',
     rating: 4.6,
     priceForTwo: 300000,
     cuisine: ['Italian', 'Fast Food'],
@@ -141,7 +140,7 @@ export const restaurantList = [
     name: 'Gourmet Burgers',
     timeForDelivery: 15,
     imgSrc:
-      'https://images.pexels.com/photos/1639569/pexels-photo-1639569.jpeg',
+      'https://images.pexels.com/photos/1640775/pexels-photo-1640775.jpeg',
     rating: 4.4,
     priceForTwo: 320000,
     cuisine: ['American', 'Fast Food'],
