@@ -1,5 +1,6 @@
 import Rating from '../Rating'
 import DiscountBanner from '../../assets/images/discountBanner.png'
+import RestaurantImage from '../../assets/images/restaurant.png'
 import getTimeString from '../../utils/getTimeString'
 
 const RestaurantCard = props => {
@@ -38,16 +39,35 @@ const RestaurantCard = props => {
 }
 
 const RestaurantCards = props => {
-  const { restaurantList } = props
-  return (
-    <div className='restaurant-card-container'>
-      <div className='restaurant-cards'>
-        {restaurantList?.map(restaurant => {
-          return <RestaurantCard key={restaurant.id} restaurant={restaurant} />
-        })}
+  console.log({ props })
+  const { restaurantList, handleResetFilter } = props
+  console.log({ restaurantList })
+  if (restaurantList && restaurantList.length > 0) {
+    return (
+      <div className='restaurant-card-container'>
+        <div className='restaurant-cards'>
+          {restaurantList?.map(restaurant => {
+            return (
+              <RestaurantCard key={restaurant.id} restaurant={restaurant} />
+            )
+          })}
+        </div>
       </div>
-    </div>
-  )
+    )
+  } else {
+    return (
+      <div className='no-result-container'>
+        <div className='no-result-banner'>
+          <span className='no-result-text'>Shoot!</span>
+          <span>{`No Restaurants Found :(`} </span>
+          <button className='reset-filter' onClick={handleResetFilter}>
+            Click here to reset all filters
+          </button>
+          <img src={RestaurantImage} className='no-restaurant-image'></img>
+        </div>
+      </div>
+    )
+  }
 }
 
 export default RestaurantCards

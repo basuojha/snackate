@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Header from './components/Header'
 import Body from './components/Body'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 /**
  * Components -
@@ -25,6 +26,13 @@ const AppLayout = () => {
     </div>
   )
 }
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <AppLayout />
+  }
+])
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(<AppLayout />)

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 const comparisonFunctions = {
   lessThan: (a, b) => a < b,
@@ -8,10 +8,10 @@ const comparisonFunctions = {
   includes: (a, b) => a.includes(b)
 }
 
-const useFilter = list => {
-  const [filterList, setFilterList] = useState(list)
+const useFilter = initialList => {
   const [activeFilters, setActiveFilters] = useState([])
-  const applyFilter = ({ list, filterCondition, filterName, value }) => {
+
+  const addOrRemoveFilter = ({ filterCondition, filterName, value }) => {
     let newActiveFilters = [...activeFilters]
     const filterIndex = newActiveFilters.findIndex(
       filter => filter.filterName === filterName
@@ -24,11 +24,11 @@ const useFilter = list => {
       newActiveFilters.push({ filterCondition, filterName, value })
     }
     setActiveFilters(newActiveFilters)
-    applyAllFilters(newActiveFilters)
   }
-  const applyAllFilters = filters => {
-    let newFilterList = list
-    filters.forEach(({ filterCondition, filterName, value }) => {
+
+  const listToRender = useMemo(() => {
+    let newFilterList = initialList
+    activeFilters.forEach(({ filterCondition, filterName, value }) => {
       const comparisonFunction = comparisonFunctions[filterCondition]
       if (!comparisonFunction) {
         console.error('Unknown filter comparison')
@@ -38,13 +38,14 @@ const useFilter = list => {
         comparisonFunction(item[filterName], value)
       )
     })
-    setFilterList(newFilterList)
-  }
-  const resetFilter = () => {
+    return newFilterList
+  }, [activeFilters, initialList])
+
+  const resetFilters = () => {
+    console.log('Hereee')
     setActiveFilters([])
-    setFilterList(list)
   }
-  return { filterList, resetFilter, applyFilter }
+  return { listToRender, resetFilters, addOrRemoveFilter, activeFilters }
 }
 
 export default useFilter

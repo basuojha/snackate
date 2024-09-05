@@ -1,10 +1,8 @@
 import { quickFilterItems } from '../../utils/constants'
 import SortBar from '../SortBar'
-import { useState } from 'react'
 
 const FilterAndSort = props => {
-  const { restaurantList = [], applyFilter, resetFilter } = props
-  const [selectedPills, setSelectedPills] = useState([])
+  const { restaurantList = [], applyFilter, activeFilters } = props
 
   return (
     <div className='filter-sort-container'>
@@ -17,7 +15,11 @@ const FilterAndSort = props => {
                 <div
                   key={index}
                   className={`pill ${
-                    selectedPills.includes(index) ? 'pill-selected' : ''
+                    activeFilters.find(
+                      filter => filter.filterName === filterName
+                    )
+                      ? 'pill-selected'
+                      : ''
                   }`}
                   onClick={() => {
                     applyFilter({
@@ -26,15 +28,6 @@ const FilterAndSort = props => {
                       value,
                       filterName
                     })
-                    const newSelectedPills = [...selectedPills]
-                    if (newSelectedPills.includes(index)) {
-                      setSelectedPills(
-                        newSelectedPills.filter(item => item !== index)
-                      )
-                    } else {
-                      newSelectedPills.push(index)
-                      setSelectedPills(newSelectedPills)
-                    }
                   }}
                 >
                   <span className='pill-name'>{name}</span>

@@ -8,7 +8,7 @@ export const quickFilterItems = [
   },
   {
     type: 'range',
-    name: '4+ Rating',
+    name: 'Rating 4.0+',
     filterName: 'rating',
     filterCondition: 'greaterThan',
     value: 4
