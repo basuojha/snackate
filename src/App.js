@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import ReactDOM from 'react-dom'
-import Header from './components/Header'
-import Body from './components/Body'
-import About from './components/About'
-import Contact from './components/Contact'
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom'
-import ErrorPage from './components/ErrorPage'
-import Restaurant from './components/Restaurant'
+
+const About = lazy(() => import('./components/About'))
+const Body = lazy(() => import('./components/Body'))
+const Contact = lazy(() => import('./components/Contact'))
+const Header = lazy(() => import('./components/Header'))
+const Restaurant = lazy(() => import('./components/Restaurant'))
+const ErrorPage = lazy(() => import('./components/ErrorPage'))
 
 /**
  * Components -
@@ -36,15 +37,44 @@ const appRouter = createBrowserRouter([
     path: '/',
     element: <AppLayout />,
     children: [
-      { path: '/', element: <Body /> },
-      { path: '/restaurant/:id', element: <Restaurant /> },
-      { path: '/about', element: <About /> },
+      {
+        path: '/',
+        element: (
+          <Suspense>
+            <Body />
+          </Suspense>
+        )
+      },
+      {
+        path: '/restaurant/:id',
+        element: (
+          <Suspense>
+            <Restaurant />
+          </Suspense>
+        )
+      },
+      {
+        path: '/about',
+        element: (
+          <Suspense>
+            <About />
+          </Suspense>
+        )
+      },
       {
         path: '/contact',
-        element: <Contact />
+        element: (
+          <Suspense>
+            <Contact />
+          </Suspense>
+        )
       }
     ],
-    errorElement: <ErrorPage />
+    errorElement: (
+      <Suspense>
+        <ErrorPage />
+      </Suspense>
+    )
   }
 ])
 

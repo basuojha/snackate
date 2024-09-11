@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react'
-import RestaurantCards from '../RestaurantCard'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import SearchBar from '../SearchBar'
 import FilterAndSort from '../FilterButtons'
 import useFilter from '../../hooks/useFilter'
 import LoaderCards from '../LoaderCards'
 import useFetchRestaurantList from '../../hooks/useFetchRestaurantList'
+import useIsOnline from '../../hooks/useIsOnline'
+
+const RestaurantCards = lazy(() => import('../RestaurantCards'))
 
 const sortList = ({ sortBy, filterList, isSorted, ascending = true }) => {
   if (isSorted) {
@@ -20,6 +22,8 @@ const Body = () => {
   const [searchText, setSearchText] = useState('')
   const { listToRender, addOrRemoveFilter, resetFilters, activeFilters } =
     useFilter(filteredRestaurantList)
+  const isOnline = useIsOnline()
+  console.log({ isOnline })
 
   const handleSearchClick = () => {
     if (searchText.length) {
@@ -37,6 +41,19 @@ const Body = () => {
     resetFilters()
     setFilteredRestaurantList(restaurantList)
     setSearchText('')
+  }
+
+  if (!isOnline) {
+    return (
+      <div className='no-result-container'>
+        <div className='no-result-banner'>
+          <span className='no-result-text'>Shoot!</span>
+          <span>
+            Guess you lost your connection! Try connecting to internet again!
+          </span>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -58,10 +75,12 @@ const Body = () => {
       {!loaded ? (
         <LoaderCards />
       ) : (
-        <RestaurantCards
-          restaurantList={listToRender}
-          handleResetFilter={handleResetFilter}
-        />
+        <Suspense fallback={<LoaderCards />}>
+          <RestaurantCards
+            restaurantList={listToRender}
+            handleResetFilter={handleResetFilter}
+          />
+        </Suspense>
       )}
     </div>
   )
