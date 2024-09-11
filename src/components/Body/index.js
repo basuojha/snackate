@@ -4,6 +4,7 @@ import SearchBar from '../SearchBar'
 import FilterAndSort from '../FilterButtons'
 import useFilter from '../../hooks/useFilter'
 import LoaderCards from '../LoaderCards'
+import useFetchRestaurantList from '../../hooks/useFetchRestaurantList'
 
 const sortList = ({ sortBy, filterList, isSorted, ascending = true }) => {
   if (isSorted) {
@@ -14,19 +15,12 @@ const sortList = ({ sortBy, filterList, isSorted, ascending = true }) => {
 }
 
 const Body = () => {
-  const [restaurantList, setRestaurantList] = useState([])
-  const [loaded, setLoaded] = useState(false)
-  const [filteredRestaurantList, setFilteredRestaurantList] = useState([])
+  const { restaurantList, filteredRestaurantList, loaded } =
+    useFetchRestaurantList()
   const [searchText, setSearchText] = useState('')
   const { listToRender, addOrRemoveFilter, resetFilters, activeFilters } =
     useFilter(filteredRestaurantList)
 
-  useEffect(() => {
-    fetchData()
-    console.log('USEFFECT RENDER')
-  }, [])
-
-  console.log('BODYY RENDER')
   const handleSearchClick = () => {
     if (searchText.length) {
       setFilteredRestaurantList(
@@ -43,18 +37,6 @@ const Body = () => {
     resetFilters()
     setFilteredRestaurantList(restaurantList)
     setSearchText('')
-  }
-
-  const fetchData = async () => {
-    try {
-      const response = await fetch('http://localhost:3004/api/restaurants/list')
-      const data = await response.json()
-      setRestaurantList(data)
-      setFilteredRestaurantList(data)
-      setLoaded(true)
-    } catch (error) {
-      console.error('Error fetching data: ', error)
-    }
   }
 
   return (

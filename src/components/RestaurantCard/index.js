@@ -2,6 +2,7 @@ import Rating from '../Rating'
 import DiscountBanner from '../../assets/images/discountBanner.png'
 import RestaurantImage from '../../assets/images/restaurant.png'
 import getTimeString from '../../utils/getTimeString'
+import { Link } from 'react-router-dom'
 
 const RestaurantCard = props => {
   const {
@@ -13,11 +14,12 @@ const RestaurantCard = props => {
       rating,
       priceForTwo,
       cuisine,
-      discount
+      discount,
+      id
     } = {}
   } = props
   return (
-    <div className='restaurant-card'>
+    <Link to={`/restaurant/${id}`} className='restaurant-card'>
       <div className='card-item'>
         <img className='restaurant-image' src={imgSrc}></img>
         <img className='discount-banner' src={DiscountBanner}></img>
@@ -34,7 +36,7 @@ const RestaurantCard = props => {
           <Rating rating={rating} />
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
 
