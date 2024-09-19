@@ -5,6 +5,8 @@ import useFilter from '../../hooks/useFilter'
 import LoaderCards from '../LoaderCards'
 import useFetchRestaurantList from '../../hooks/useFetchRestaurantList'
 import useIsOnline from '../../hooks/useIsOnline'
+import RestaurantImage from '../../assets/images/restaurant.png'
+import { Link } from 'react-router-dom'
 
 const RestaurantCards = lazy(() => import('../RestaurantCards'))
 
@@ -17,8 +19,13 @@ const sortList = ({ sortBy, filterList, isSorted, ascending = true }) => {
 }
 
 const Body = () => {
-  const { restaurantList, filteredRestaurantList, loaded } =
-    useFetchRestaurantList()
+  const {
+    restaurantList,
+    filteredRestaurantList,
+    loaded,
+    error: apiError,
+    setFilteredRestaurantList
+  } = useFetchRestaurantList()
   const [searchText, setSearchText] = useState('')
   const { listToRender, addOrRemoveFilter, resetFilters, activeFilters } =
     useFilter(filteredRestaurantList)
@@ -56,15 +63,40 @@ const Body = () => {
     )
   }
 
+  if (apiError) {
+    return (
+      <div id='no-result-container'>
+        <div
+          id='no-result-banner'
+          className='flex justify-center flex-col items-center p-16'
+        >
+          <span id='no-result-text' className='font-bold text-4xl pb-4'>
+            Shoot!
+          </span>
+          <span className='pb-4 text-xl'>{`No Restaurants Found!`} </span>
+          <span>
+            {' '}
+            Let's take you back to{' '}
+            <Link to={'/'} className='underline'>
+              {' '}
+              Snackate{' '}
+            </Link>
+          </span>
+          <img src={RestaurantImage} className='h-72 pt-4'></img>
+        </div>
+      </div>
+    )
+  }
+
   return (
-    <div className='body'>
+    <div className='px-[15%] py-16'>
       <SearchBar
         searchText={searchText}
         setSearchText={setSearchText}
         handleSearchClick={handleSearchClick}
         handleResetFilter={handleResetFilter}
       />
-      <div className='filter-search-container'>
+      <div id='filter-sort-container' className='px-2 pt-6 py-4 items-center'>
         <FilterAndSort
           restaurantList={listToRender}
           applyFilter={addOrRemoveFilter}

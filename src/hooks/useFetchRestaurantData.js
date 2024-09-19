@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 const useFetchRestaurantData = restaurantId => {
   const [restaurantData, setRestaurantData] = useState({})
   const [loaded, setLoaded] = useState(false)
+  const [error, setError] = useState(false)
 
   useEffect(() => {
     fetchRestaurantData()
@@ -13,14 +14,18 @@ const useFetchRestaurantData = restaurantId => {
         `http://localhost:5003/api/restaurants/${restaurantId}`
       )
       const respData = await response.json()
-      setRestaurantData(respData)
+      if (response.ok) {
+        setRestaurantData(respData)
+      } else {
+        setError(true)
+      }
     } catch (err) {
       console.error(err)
     } finally {
       setLoaded(true)
     }
   }
-  return { restaurantData, loaded }
+  return { restaurantData, loaded, error }
 }
 
 export default useFetchRestaurantData

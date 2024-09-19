@@ -18,20 +18,27 @@ const Contact = () => {
   }
 
   return (
-    <div className='contact-container'>
-      <div className='text-page-details'>
-        <h1 className='heading-title'>Contact Us</h1>
-        <p>
+    <div id='contact-container' className='px-[15%] py-16'>
+      <div className='text-justify p-2'>
+        <h1
+          id='heading-title'
+          className='font-bold text-3xl pb-4 text-[#7E4338]'
+        >
+          Contact Us
+        </h1>
+        <p className='pb-6'>
           We’d love to hear from you! Whether you have a question, feedback, or
           need assistance, feel free to reach out to us. Here’s how you can get
           in touch:
         </p>
-        <h3 className='para-title'>Customer Support</h3>
+        <h3 id='para-title' className='font-bold text-xl pb-2 text-[#C5705D]'>
+          Customer Support
+        </h3>
         <p>
           If you need help with your orders, have questions about our services,
           or need technical support, our customer support team is here for you.
         </p>
-        <ul>
+        <ul className='pb-4'>
           <li>
             <b>Email: </b>contact.snackate@gmail.com
           </li>
@@ -40,32 +47,38 @@ const Contact = () => {
           </li>
         </ul>
 
-        <h3 className='para-title'>Business Inquiries</h3>
+        <h3 id='para-title' className='font-bold text-xl pb-2 text-[#C5705D]'>
+          Business Inquiries
+        </h3>
         <p>
           For partnerships, media inquiries, or any other business-related
           questions, please contact our business development team.
         </p>
-        <ul>
+        <ul className='pb-4'>
           <li>
             <b>Email: </b>contact.snackate@gmail.com
           </li>
         </ul>
-        <h3 className='para-title'>Feedback</h3>
+        <h3 id='para-title' className='font-bold text-xl pb-2 text-[#C5705D]'>
+          Feedback
+        </h3>
         <p>
           We value your feedback and are always looking to improve. Share your
           thoughts or suggestions with us!
         </p>
-        <ul>
+        <ul className='pb-4'>
           <li>
             <b>Email: </b>contact.snackate@gmail.com
           </li>
         </ul>
-        <h3 className='para-title'>Follow Us</h3>
+        <h3 id='para-title' className='font-bold text-xl pb-2 text-[#C5705D]'>
+          Follow Us
+        </h3>
         <p>
           Stay updated with our latest news, promotions, and more by following
           us on social media:
         </p>
-        <ul>
+        <ul className='pb-4'>
           <li>
             <b>Facebook: </b>facebook.com/basuojhamusic
           </li>
@@ -76,7 +89,7 @@ const Contact = () => {
             <b>Instagram: </b>instagram.com/basuojhamusic
           </li>
         </ul>
-        <p className='contact-form-para'>
+        <p id='contact-form-para' className='pb-4'>
           Alternatively, you can use the form below to send us a message
           directly:
         </p>

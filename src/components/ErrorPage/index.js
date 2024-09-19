@@ -6,15 +6,18 @@ const ErrorPage = () => {
   const error = useRouteError()
   console.log(error)
   return (
-    <div className='error-page-container'>
-      <h1 className='heading-title'>Uh-Oh!</h1>
+    <div id='error-page-container' className='flex justify-center flex-col items-center p-16 gap-8'>
+      <h1 id='heading-title' className='text-4xl'>
+        Uh-Oh!
+      </h1>
       <span>
         {error.status === 404 ? 'Page not found!' : 'Something went wrong!'}{' '}
-        Let's take you back to <Link to={'/'}>Snackate</Link>
+        Let's take you back to <Link to={'/'} className='underline'>Snackate</Link>
       </span>
       <img
+      className='w-64'
         src={error.status === 404 ? ErrorNotFound : ErrorImg}
-        className='error-img'
+        id='error-img'
       ></img>
     </div>
   )

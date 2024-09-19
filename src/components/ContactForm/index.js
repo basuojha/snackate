@@ -51,12 +51,18 @@ const ContactForm = ({ setFeedbackMessage = () => {} }) => {
   }
 
   return (
-    <div className='contact-form'>
-      <h2>Contact Us</h2>
+    <div
+      id='contact-form'
+      className='bg-[#F8EDE3] p-8 w-full sm:w-full md:w-full lg:w-1/2 rounded-lg min-w-[50%]'
+    >
+      <h2 className='font-bold text-xl pb-8 text-[#C5705D]'>Contact Us</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor='name'>Name:</label>
+        <div className='pb-4 flex gap-2'>
+          <label htmlFor='name' className='text-[#7E4338] font-medium w-28'>
+            Name:
+          </label>
           <input
+            className='w-full text-[#7E4338] border-2 placeholder-[rgb(126,67,56)] rounded-lg border-[#7E4338] px-2 focus:outline-none focus:ring-1 focus:ring-[#C5705D] focus:border-[#C5705D] focus:shadow-sm focus:shadow-[#C5705D]'
             type='text'
             id='name'
             name='name'
@@ -65,9 +71,12 @@ const ContactForm = ({ setFeedbackMessage = () => {} }) => {
             required
           />
         </div>
-        <div>
-          <label htmlFor='email'>Email:</label>
+        <div className='pb-4 flex gap-2'>
+          <label htmlFor='email' className='text-[#7E4338] font-medium w-28'>
+            Email:
+          </label>
           <input
+            className='w-full text-[#7E4338] border-2 placeholder-[rgb(126,67,56)] rounded-lg border-[#7E4338] px-2 focus:outline-none focus:ring-1 focus:ring-[#C5705D] focus:border-[#C5705D] focus:shadow-sm focus:shadow-[#C5705D]'
             type='email'
             id='email'
             name='email'
@@ -76,9 +85,12 @@ const ContactForm = ({ setFeedbackMessage = () => {} }) => {
             required
           />
         </div>
-        <div>
-          <label htmlFor='phone'>Phone:</label>
+        <div className='pb-4 flex gap-2'>
+          <label htmlFor='phone' className='text-[#7E4338] font-medium w-28'>
+            Phone:
+          </label>
           <input
+            className='w-full text-[#7E4338] border-2 placeholder-[rgb(126,67,56)] rounded-lg border-[#7E4338] px-2 focus:outline-none focus:ring-1 focus:ring-[#C5705D] focus:border-[#C5705D] focus:shadow-sm focus:shadow-[#C5705D]'
             type='tel'
             id='phone'
             name='phone'
@@ -86,9 +98,12 @@ const ContactForm = ({ setFeedbackMessage = () => {} }) => {
             onChange={handleChange}
           />
         </div>
-        <div>
-          <label htmlFor='subject'>Subject:</label>
+        <div className='pb-4 flex gap-2'>
+          <label htmlFor='subject' className='text-[#7E4338] font-medium w-28'>
+            Subject:
+          </label>
           <input
+            className='w-full text-[#7E4338] border-2 placeholder-[rgb(126,67,56)] rounded-lg border-[#7E4338] px-2 focus:outline-none focus:ring-1 focus:ring-[#C5705D] focus:border-[#C5705D] focus:shadow-sm focus:shadow-[#C5705D]'
             type='text'
             id='subject'
             name='subject'
@@ -96,9 +111,12 @@ const ContactForm = ({ setFeedbackMessage = () => {} }) => {
             onChange={handleChange}
           />
         </div>
-        <div>
-          <label htmlFor='message'>Message:</label>
+        <div className='pb-4 flex gap-2'>
+          <label htmlFor='message' className='text-[#7E4338] font-medium w-28'>
+            Message:
+          </label>
           <textarea
+            className='w-full text-[#7E4338] border-2 placeholder-[rgb(126,67,56)] rounded-lg border-[#7E4338] px-2 focus:outline-none focus:ring-1 focus:ring-[#C5705D] focus:border-[#C5705D] focus:shadow-sm focus:shadow-[#C5705D] min-h-7 max-h-16'
             id='message'
             name='message'
             value={formData.message}
@@ -106,7 +124,14 @@ const ContactForm = ({ setFeedbackMessage = () => {} }) => {
             required
           ></textarea>
         </div>
-        <button type='submit'>Submit</button>
+        <div className='flex justify-end'>
+          <button
+            type='submit'
+            className='bg-[#C5705D] rounded-lg text-white px-2.5 py-1.5'
+          >
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   )

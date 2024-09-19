@@ -46,7 +46,7 @@ const SortBar = () => {
   return (
     <div className='sort-bar'>
       <img
-        className='sort-icon'
+        className='w-8'
         src={SortIcon}
         onClick={() => setIsSortBarOpen(!isSortBarOpen)}
       ></img>

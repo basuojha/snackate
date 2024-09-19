@@ -5,21 +5,22 @@ const FilterAndSort = props => {
   const { restaurantList = [], applyFilter, activeFilters } = props
 
   return (
-    <div className='filter-sort-container'>
-      <div className='filter-bar-container'>
+    <div id='filter-container' className='flex justify-between items-center'>
+      <div id='filter-btn-container' className='flex gap-3'>
         {quickFilterItems.map((filter, index) => {
           const { type, name, filterCondition, filterName, value } = filter
           switch (type) {
             case 'range':
               return (
-                <div
+                <button
                   key={index}
-                  className={`pill ${
+                  id={`filter-btn-${index}`}
+                  className={`px-2.5 py-1 rounded-xl border-solid border-2 font-sm  ${
                     activeFilters.find(
                       filter => filter.filterName === filterName
                     )
-                      ? 'pill-selected'
-                      : ''
+                      ? 'bg-[#C5705D] text-white border-[#C5705D]'
+                      : 'bg-[#F8EDE3] text-[#7E4338] border-[#7E4338]'
                   }`}
                   onClick={() => {
                     applyFilter({
@@ -30,8 +31,8 @@ const FilterAndSort = props => {
                     })
                   }}
                 >
-                  <span className='pill-name'>{name}</span>
-                </div>
+                  <span id='filter-btn-name'>{name}</span>
+                </button>
               )
             // case 'dropdown':
           }

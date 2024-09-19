@@ -1,11 +1,14 @@
+import { Link } from 'react-router-dom'
 import LogoImage from '../../assets/images/logo.png'
-import SnackateImage from '../../assets/images/snackate.jpg'
+import SnackateImage from '../../assets/images/snackate.png'
 
 const Logo = () => {
   return (
-    <div className='logo-container'>
-      <img className='logo' src={SnackateImage}></img>
-    </div>
+    <Link to='/'>
+      <div className='logo-container'>
+        <img className='w-32 p-4' src={SnackateImage}></img>
+      </div>
+    </Link>
   )
 }
 
