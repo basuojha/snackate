@@ -8,7 +8,7 @@ import useIsOnline from '../../hooks/useIsOnline'
 import RestaurantImage from '../../assets/images/restaurant.png'
 import { Link } from 'react-router-dom'
 
-const RestaurantCards = lazy(() => import('../RestaurantCards'))
+const RestaurantCards = lazy(() => import('../RestaurantList'))
 
 const sortList = ({ sortBy, filterList, isSorted, ascending = true }) => {
   if (isSorted) {

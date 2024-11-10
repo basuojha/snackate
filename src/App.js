@@ -54,11 +54,7 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: (
-          <Suspense>
-            <Body />
-          </Suspense>
-        )
+        element: <Body />
       },
       {
         path: '/restaurant/:id',

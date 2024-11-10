@@ -101,6 +101,7 @@ const Dish = ({
             onClick={() => {
               dispatch(removeItem(dish))
             }}
+            data-testid='sub-quantity'
           >
             -
           </button>
@@ -112,6 +113,7 @@ const Dish = ({
           </div>
           <button
             id='add-subtract-icon'
+            data-testid='add-quantity'
             className='rounded-md px-2 py-1 bg-[#C5705D] text-white items-center flex justify-center h-3/4  w-10'
             onClick={() => {
               if (restaurantId && !selectedRestaurant) {

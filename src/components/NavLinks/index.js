@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import CartImage from '../../assets/images/cart.png'
 import { useSelector } from 'react-redux'
+import Login from '../Login'
 
 const NavLinks = () => {
   const cartItems = useSelector(state => state.cart.cartItems)
@@ -16,7 +17,7 @@ const NavLinks = () => {
 
   return (
     <div id='nav-links-container' className='flex'>
-      <ul id='nav-link-items' className='flex '>
+      <ul id='nav-link-items' className='flex items-center'>
         <li id='home' className='p-4 text-[#7E4338] font-semibold'>
           <Link to='/' className='link-item'>
             Home
@@ -40,9 +41,15 @@ const NavLinks = () => {
               alt='Cart'
               className='w-6 h-6 relative'
             />
-            <span className='relative pl-1'>{`(${getTotalCount()})`}</span>
+            <span
+              data-testid='cart-count'
+              className='relative pl-1'
+            >{`(${getTotalCount()})`}</span>
           </div>
         </Link>
+        <li className='p-4 text-[#7E4338] font-semibold'>
+          {/* <Login></Login> */}
+        </li>
       </ul>
     </div>
   )

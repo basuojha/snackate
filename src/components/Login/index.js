@@ -1,13 +1,14 @@
 import React from 'react'
-import { GoogleLogin } from '@react-oauth/google'
+import GoogleIcon from '../../assets/images/googleIcon.png'
+import { useGoogleLogin } from '@react-oauth/google'
 
 const Login = () => {
   const handleLoginSuccess = async credentialResponse => {
     console.log('Google Login Success', credentialResponse)
-    const { credential: jwtLoginToken } = credentialResponse
+    const { access_token: jwtLoginToken } = credentialResponse
     console.log(jwtLoginToken)
     try {
-      const response = await fetch('http://localhost:1234/api/login/verify', {
+      const response = await fetch('http://localhost:5003/api/login/verify', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -25,16 +26,25 @@ const Login = () => {
       console.error(error)
     }
   }
+
   const handleLoginFailure = () => {
     console.log('Google Login Failure')
   }
+
+  const login = useGoogleLogin({
+    onSuccess: handleLoginSuccess,
+    onError: handleLoginFailure
+  })
+
   return (
-    <div>
-      <h2>Login With Google</h2>
-      <GoogleLogin
-        onSuccess={handleLoginSuccess}
-        onError={handleLoginFailure}
-      />
+    <div className='flex justify-center items-center'>
+      <button
+        onClick={() => login()}
+        className='flex items-center px-6 py-2 bg-[#8E4338] text-white rounded-md hover:bg-[#7E4338] transition-colors shadow-md'
+      >
+        <img src={GoogleIcon} alt='Google icon' className='w-5 h-5 mr-2' />
+        Sign in with Google
+      </button>
     </div>
   )
 }

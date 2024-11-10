@@ -11,6 +11,7 @@ const SearchBar = ({
       <div id='search-bar-container' className='flex gap-2 w-full'>
         <input
           id='search-bar'
+          data-testid='search-bar'
           type='text'
           className='text-[#7E4338] w-full border-2 placeholder-[rgb(126,67,56)] rounded-lg border-[#7E4338] px-2 focus:outline-none focus:ring-1 focus:ring-[#C5705D] focus:border-[#C5705D] focus:shadow-sm focus:shadow-[#C5705D]'
           placeholder='Search'
@@ -19,6 +20,7 @@ const SearchBar = ({
         ></input>
         <button
           id='search-btn'
+          data-testid='search-btn'
           className='search-bar-btn'
           onClick={() => {
             handleSearchClick()
